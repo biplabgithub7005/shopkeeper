@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+
+{% include 'navbar.html'%}
+    <!-- Page Content  -->
+    <div id="content">
+    {% include 'top-nav.html'%}
+
+        <div class="card">
+
+                  <div class="card-header">
+                    <h6 class="text-uppercase mb-0">Customers Table</h6>
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-sm card-text">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Password</th>
+                          <th>Mobile</th>
+                          <th>Email</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for cus in c%}
+                            <tr >
+                                <td scope="row">{{forloop.counter}}</td>
+                                <td>{{cus.name}}</td>
+                                <td>{{cus.password}}</td>
+                                <td>{{cus.mobile}}</td>
+                                <td>{{cus.email}}</td>
+                                <td><a href="{% url 'update_customer' cus.id %}" class="text-info"> <i class="fas fa-user-edit "></i> </a></td>
+                                <td><a href="{% url 'delete_customer' cus.id %} " class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+                            </tr>
+                            {%endfor%}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+
+
+{% endblock%}

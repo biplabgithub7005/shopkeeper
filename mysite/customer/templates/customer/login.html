@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+
+    <div class="container">
+    <!-- Page Content  -->
+
+
+
+<br><br>
+        <div class="card">
+
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0">Customers Login</h6>
+            </div>
+            <div class="card-body">
+
+                {% if messages %}
+                <div class="alert alert-warning">
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    </div>
+                    {% endif %}
+
+
+                <form method="post">
+                    {% csrf_token %}
+
+
+                    {{form}}
+
+                    <br>
+
+                    <button type="submit" class="btn btn-success p-6">Login</button>
+                </form>
+            </div>
+
+
+        </div>
+        </div>
+
+
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+
+
+{% endblock%}

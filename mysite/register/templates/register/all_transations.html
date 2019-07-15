@@ -1,0 +1,99 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+
+    {% include 'navbar.html'%}
+    <!-- Page Content  -->
+    <div id="content">
+        {% include 'top-nav.html'%}
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0">Customers Table</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-sm card-text">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Amouts</th>
+                        <th>Type</th>
+                        <th>Date</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cus in c %}
+                    <tr>
+                        <td scope="row">{{forloop.counter}}</td>
+                        <td><a href="{% url 'details_customer' cus.pk %}" class="btn-link"> {{cus.customer_name.name}}</a></td>
+                        <td>{{cus.amount}}</td>
+                        <td>{{cus.type}}</td>
+                        <td>{{cus.date}}</td>
+
+                    </tr>
+                    {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0">Total Cash</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-sm card-text">
+                    <thead>
+                    <tr>
+
+                        <th> Total Credit</th>
+                        <th> Total Debit</th>
+                        <th> Totaol Remaining</th>
+
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+
+
+                        <td>{{total_credit}}</td>
+                        <td>{{total_cash}}</td>
+                        <td>{{remaining}}</td>
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+
+
+{% endblock%}
